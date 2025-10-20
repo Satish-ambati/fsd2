@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Changed from useHistory
 
 function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate(); // Changed from useHistory
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ function Register() {
         password,
       });
       alert('Registration successful');
-      history.push('/login');
+      navigate('/login'); // Changed from history.push
     } catch (err) {
       alert(err.response.data.message);
     }

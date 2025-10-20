@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Changed from useHistory
 import Cart from '../components/Cart';
 
 function CartPage() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
   const [address, setAddress] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate(); // Changed from useHistory
 
   const removeFromCart = (productId) => {
     const updatedCart = cart.filter(item => item.product._id !== productId);
@@ -30,7 +30,7 @@ function CartPage() {
       alert('Order placed successfully!');
       setCart([]);
       localStorage.removeItem('cart');
-      history.push('/order-confirmation');
+      navigate('/order-confirmation'); // Changed from history.push
     } catch (err) {
       alert('Error placing order');
     }

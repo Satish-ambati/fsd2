@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -11,13 +11,13 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="/cart" component={CartPage} />
-        <Route path="/order-confirmation" component={OrderConfirmation} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/order-confirmation" element={<OrderConfirmation />} />
+      </Routes>
     </Router>
   );
 }
